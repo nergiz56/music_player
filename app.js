@@ -13,14 +13,46 @@ window.addEventListener("load", () => {
     displayMusic(music);
 });
 
-function displayMusic(music){
-    title.innerText = music.title;
+function displayMusic(music) {
+    title.innerText = music.getName();
     singer.innerText = music.singer;
     image.src = "img/" + music.img;
     audio.src = "mp3/" + music.file;
-
 }
 
+
 play.addEventListener("click", () => {
+    const isMusicPlay = container.classList.contains("playing");
+    isMusicPlay ? pauseMusic() : playMusic();
+    
+});
+
+prev.addEventListener("click", () => {
+    prevMusic();
+});
+
+next.addEventListener("click", () => {
+    nextMusic();
+});
+
+
+
+function prevMusic(){
+    player.prev();
+    let music = player.getMusic();
+    displayMusic(music);
+    playMusic();
+}
+
+function nextMusic(){
+    container.classList.remove("playing");
+    play.classList = "fa-solid fa-play";
+    audio.pause();
+}
+
+function playMusic(){
+    container.classList.add("playing");
+    play.classList = "fa-solid fa-pause";
     audio.play();
-})
+}
+
