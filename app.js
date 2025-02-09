@@ -6,10 +6,6 @@ const prev = document.querySelector("#controls #prev");
 const play = document.querySelector("#controls #play");
 const next = document.querySelector("#controls #next");
 
-
-
-
-
 const player = new MusicPlayer(musicList);
 
 window.addEventListener("load", () => {
@@ -25,3 +21,6 @@ function displayMusic(music){
 
 }
 
+play.addEventListener("click", () => {
+    audio.play();
+})
